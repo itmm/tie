@@ -67,7 +67,6 @@ NSInteger expression(const char **begin, const char *end) {
 @implementation Node
 
     - (void)setSource:(NSString *)source {
-        NSLog(@"setting source from %@ to %@", _source, source);
         _source = source;
     }
 
