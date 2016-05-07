@@ -12,6 +12,9 @@
 		24B4C62B1CDE392400335719 /* tie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24B4C6291CDE392400335719 /* tie.xcdatamodeld */; };
 		24B4C62D1CDE392500335719 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24B4C62C1CDE392500335719 /* Assets.xcassets */; };
 		24B4C6301CDE392500335719 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24B4C62E1CDE392500335719 /* MainMenu.xib */; };
+		24B4C63B1CDE6C9B00335719 /* NavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B4C63A1CDE6C9B00335719 /* NavigationView.m */; };
+		24B4C63E1CDE6F0D00335719 /* EscapableTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B4C63D1CDE6F0D00335719 /* EscapableTextView.m */; };
+		24B4C6411CDE77CA00335719 /* Node.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B4C6401CDE77CA00335719 /* Node.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,12 @@
 		24B4C62C1CDE392500335719 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24B4C62F1CDE392500335719 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		24B4C6311CDE392500335719 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24B4C6391CDE6C9B00335719 /* NavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationView.h; sourceTree = "<group>"; };
+		24B4C63A1CDE6C9B00335719 /* NavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationView.m; sourceTree = "<group>"; };
+		24B4C63C1CDE6F0D00335719 /* EscapableTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EscapableTextView.h; sourceTree = "<group>"; };
+		24B4C63D1CDE6F0D00335719 /* EscapableTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EscapableTextView.m; sourceTree = "<group>"; };
+		24B4C63F1CDE77CA00335719 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
+		24B4C6401CDE77CA00335719 /* Node.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Node.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +71,12 @@
 				24B4C6311CDE392500335719 /* Info.plist */,
 				24B4C6291CDE392400335719 /* tie.xcdatamodeld */,
 				24B4C6261CDE392400335719 /* Supporting Files */,
+				24B4C6391CDE6C9B00335719 /* NavigationView.h */,
+				24B4C63A1CDE6C9B00335719 /* NavigationView.m */,
+				24B4C63C1CDE6F0D00335719 /* EscapableTextView.h */,
+				24B4C63D1CDE6F0D00335719 /* EscapableTextView.m */,
+				24B4C63F1CDE77CA00335719 /* Node.h */,
+				24B4C6401CDE77CA00335719 /* Node.m */,
 			);
 			path = tie;
 			sourceTree = "<group>";
@@ -145,7 +160,10 @@
 			files = (
 				24B4C6281CDE392400335719 /* main.m in Sources */,
 				24B4C6251CDE392400335719 /* AppDelegate.m in Sources */,
+				24B4C63B1CDE6C9B00335719 /* NavigationView.m in Sources */,
 				24B4C62B1CDE392400335719 /* tie.xcdatamodeld in Sources */,
+				24B4C63E1CDE6F0D00335719 /* EscapableTextView.m in Sources */,
+				24B4C6411CDE77CA00335719 /* Node.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +305,7 @@
 				24B4C6361CDE392500335719 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

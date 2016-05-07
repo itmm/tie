@@ -18,7 +18,7 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
+    // Insert code here to init ialize your application
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
