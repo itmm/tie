@@ -11,7 +11,7 @@
 @implementation NavigationView
 
 - (void) keyUp: (NSEvent *) event {
-    if ([event.characters isEqualToString: @"e"]) {
+    if (!self.textView.editable && [event.characters isEqualToString: @"e"]) {
         if (!self.textView.node) {
             self.textView.node = Node.new;
             self.textView.node.source = @"";
