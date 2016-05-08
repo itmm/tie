@@ -63,9 +63,9 @@ static NSInteger expression(const char **begin, const char *end) {
     return sum;
 }
 
-static NSAttributedString *evaluateText(const char **begin, const char *end);
+static NSAttributedString *evaluate_text(const char **begin, const char *end);
 
-static NSAttributedString *interpretBlock(const char **begin, const char *end) {
+static NSAttributedString *interpret_block(const char **begin, const char *end) {
     eat_whitespace(begin, end);
     if (*begin == end) { return NSAttributedString.new; }
     if (isdigit(**begin) || **begin == '-' || **begin == '(') {
@@ -78,14 +78,16 @@ static NSAttributedString *interpretBlock(const char **begin, const char *end) {
         return attr;
     } else if (memcmp("bold ", *begin, 5) == 0) {
         *begin += 5;
-        NSAttributedString *sub = evaluateText(begin, end);
+        NSAttributedString *sub = evaluate_text(begin, end);
         NSMutableAttributedString *result = [[NSMutableAttributedString alloc] initWithAttributedString: sub];
         [result addAttribute: NSFontAttributeName value: [NSFont boldSystemFontOfSize: 12] range: NSMakeRange(0, sub.length)];
+        eat_whitespace(begin, end);
+        if (*begin != end && **begin == '}') { *begin += 1; }
         return result;
     } else return NSAttributedString.new;
 }
 
-static NSAttributedString *evaluateText(const char **begin, const char *end) {
+static NSAttributedString *evaluate_text(const char **begin, const char *end) {
     if (*begin == end) { return NSAttributedString.new; }
     
     const char *cur;
@@ -100,7 +102,7 @@ static NSAttributedString *evaluateText(const char **begin, const char *end) {
         
         if (*begin != end && **begin == '{') {
             *begin += 1;
-            [result appendAttributedString: interpretBlock(begin, end)];
+            [result appendAttributedString: interpret_block(begin, end)];
         }
     }
     return result;
@@ -115,7 +117,7 @@ static NSAttributedString *evaluateText(const char **begin, const char *end) {
     - (NSAttributedString *) evaluated {
         const char *begin = self.source.UTF8String;
         const char *end = begin + strlen(begin);
-        return evaluateText(&begin, end);
+        return evaluate_text(&begin, end);
     }
 
 @end
