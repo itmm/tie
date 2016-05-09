@@ -1,11 +1,3 @@
-//
-//  EscapableTextView.m
-//  tie
-//
-//  Created by Timm on 07.05.16.
-//  Copyright © 2016 Timm Knape Softwaretechnik. All rights reserved.
-//
-
 #import "EscapableTextView.h"
 
 @implementation EscapableTextView
@@ -19,7 +11,7 @@
         NSString *selected = [self attributedSubstringForProposedRange:self.selectedRange actualRange:nil].string;
         Node *nd = Node.new;
         nd.source = selected;
-        NSAttributedString *replacement = [[NSAttributedString alloc] initWithString: nd.evaluated.string];
+        NSAttributedString *replacement = [NSAttributedString.alloc initWithString: nd.evaluated.string];
         [self.textStorage replaceCharactersInRange:self.selectedRange withAttributedString: replacement];
     } else {
         [super keyDown: event];

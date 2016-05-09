@@ -67,24 +67,22 @@ static NSAttributedString *evaluate_text(const char **begin, const char *end);
 
 static NSAttributedString *interpret_block(const char **begin, const char *end) {
     eat_whitespace(begin, end);
-    if (*begin == end) { return NSAttributedString.new; }
+    NSAttributedString *result = NSAttributedString.new;
+    if (*begin == end) { return result; }
+    
     if (isdigit(**begin) || **begin == '-' || **begin == '(') {
-        NSInteger result = expression(begin, end);
-        NSNumber *number = [NSNumber numberWithInteger: result];
+        NSInteger expr = expression(begin, end);
+        NSNumber *number = [NSNumber numberWithInteger: expr];
         NSNumberFormatter *formatter = NSNumberFormatter.new;
-        NSAttributedString *attr = [[NSAttributedString alloc] initWithString:[formatter stringFromNumber: number]];
-        eat_whitespace(begin, end);
-        if (*begin != end && **begin == '}') { *begin += 1; }
-        return attr;
+        result = [NSAttributedString.alloc initWithString:[formatter stringFromNumber: number]];
     } else if (memcmp("bold ", *begin, 5) == 0) {
         *begin += 5;
         NSAttributedString *sub = evaluate_text(begin, end);
-        NSMutableAttributedString *result = [[NSMutableAttributedString alloc] initWithAttributedString: sub];
-        [result addAttribute: NSFontAttributeName value: [NSFont boldSystemFontOfSize: 12] range: NSMakeRange(0, sub.length)];
-        eat_whitespace(begin, end);
-        if (*begin != end && **begin == '}') { *begin += 1; }
-        return result;
-    } else return NSAttributedString.new;
+        result = [NSAttributedString.alloc initWithString: sub.string attributes: @{ NSFontAttributeName: [NSFont boldSystemFontOfSize: 12] }];
+    }
+    eat_whitespace(begin, end);
+    if (*begin != end && **begin == '}') { *begin += 1; }
+    return result;
 }
 
 static NSAttributedString *evaluate_text(const char **begin, const char *end) {
@@ -96,7 +94,7 @@ static NSAttributedString *evaluate_text(const char **begin, const char *end) {
         for (cur = *begin; cur != end  && *cur != '{' && *cur != '}'; ++cur) {}
         if (cur != *begin) {
             NSString *str = [[NSString alloc] initWithBytes:*begin length: cur - *begin encoding:NSUTF8StringEncoding];
-            [result appendAttributedString: [[NSAttributedString alloc] initWithString: str]];
+            [result appendAttributedString: [NSAttributedString.alloc initWithString: str]];
             *begin = cur;
         }
         
@@ -109,10 +107,6 @@ static NSAttributedString *evaluate_text(const char **begin, const char *end) {
 }
 
 @implementation Node
-
-    - (void)setSource:(NSString *)source {
-        _source = source;
-    }
 
     - (NSAttributedString *) evaluated {
         const char *begin = self.source.UTF8String;
